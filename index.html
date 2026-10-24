@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="description" content="Explore destinations, estimate your trip budget and build a day-by-day itinerary with TripWise.">
+<meta name="theme-color" content="#0d766f"><meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>TripWise — Smart Trip Planner & Budget Estimator</title>
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<header class="nav"><div class="wrap navin">
+
+  <a href="#home" class="logo">✈️ Trip<span>Wise</span></a>
+
+  <button id="menuBtn" class="icon" aria-label="Menu">☰</button>
+
+  <nav id="menu"><a href="#home">Home</a><a href="#explore">Explore</a><a href="#planner">Planner</a><a href="#itinerary">Itinerary</a><a href="#trips">My Trips</a>
+
+  <button id="themeBtn" class="icon" aria-label="Toggle theme">🌙</button></nav>
+
+</div></header>
+
+
+
+<section id="home" class="hero"><div class="wrap">
+
+  <h1>Plan smarter trips.<br>Know your budget first.</h1>
+
+  <p>Explore Indian destinations, estimate your costs, build a day-by-day itinerary and save your plans — all in your browser.</p>
+
+  <a class="btn big" href="#planner">Plan Your Trip</a>
+
+  <p class="note light">All prices are illustrative sample estimates, not real market prices.</p>
+
+</div></section>
+
+
+
+<section class="wrap"><h2>Featured Destinations</h2><div id="featured" class="grid"></div></section>
+
+<section class="wrap"><h2>How It Works</h2><div class="grid3">
+
+  <div class="card pad"><b>1. Explore</b><p>Search and filter destinations.</p></div>
+
+  <div class="card pad"><b>2. Estimate</b><p>Enter trip details and see the budget instantly.</p></div>
+
+  <div class="card pad"><b>3. Plan &amp; Save</b><p>Build an itinerary and save it to My Trips.</p></div></div></section>
+
+<section class="wrap"><h2>Popular Categories</h2><div id="cats" class="chips"></div></section>
+
+<section class="wrap"><h2>Why TripWise?</h2><div class="grid3">
+
+  <div class="card pad">💰 Transparent budget formulas</div><div class="card pad">🗓️ Editable itinerary</div><div class="card pad">💾 Saved locally, no login needed</div></div></section>
+
+
+
+<section id="explore" class="wrap"><h2>Explore Destinations</h2>
+
+  <div class="toolbar">
+
+    <input id="search" placeholder="Search by name…" aria-label="Search">
+
+    <select id="catFilter"></select>
+
+    <select id="sort"><option value="name">Sort: Name</option><option value="cost">Sort: Daily cost (low→high)</option></select>
+
+  </div><div id="destGrid" class="grid"></div></section>
+
+
+
+<section id="planner" class="wrap"><h2>Trip Planner</h2>
+
+ <div class="two">
+
+  <form id="form" class="card pad" novalidate>
+
+    <label>Destination<select id="dest"></select><small class="err" id="e-dest"></small></label>
+
+    <label>Starting city<input id="from" placeholder="e.g. Chennai"><small class="err" id="e-from"></small></label>
+
+    <div class="row"><label>Departure date<input type="date" id="dep"></label><label>Return date<input type="date" id="ret"></label></div>
+
+    <small class="err" id="e-date"></small>
+
+    <div class="row"><label>Trip days<input type="number" id="days" min="1" value="3"><small class="err" id="e-days"></small></label>
+
+    <label>Travelers<input type="number" id="trav" min="1" value="2"><small class="err" id="e-trav"></small></label></div>
+
+    <div class="row"><label>Travel mode<select id="mode"><option value="bus">Bus</option><option value="train">Train</option><option value="car">Car</option><option value="flight">Flight</option></select></label>
+
+    <label>Stay<select id="stay"><option value="budget">Budget</option><option value="standard" selected>Standard</option><option value="premium">Premium</option></select></label></div>
+
+    <div class="row"><label>Food ₹/person/day<input type="number" id="food" min="0" value="600"><small class="err" id="e-food"></small></label>
+
+    <label>Activities ₹/person/day<input type="number" id="act" min="0" value="300"><small class="err" id="e-act"></small></label></div>
+
+    <div class="row"><button class="btn" type="submit">Calculate</button><button class="btn ghost" type="button" id="reset">Reset</button></div>
+
+  </form>
+
+  <div class="card pad" id="result"></div>
+
+ </div></section>
+
+
+
+<section id="itinerary" class="wrap"><h2>Day-by-Day Itinerary</h2>
+
+  <div class="card pad"><div class="row"><button class="btn" id="suggest">Generate suggested itinerary</button><button class="btn ghost" id="clearIt">Clear itinerary</button></div>
+
+  <div id="dayTabs" class="chips"></div><div id="dayList"></div>
+
+  <form id="actForm" class="row"><input id="aName" placeholder="Activity name" required><input id="aDesc" placeholder="Short description"><button class="btn" id="aBtn">Add activity</button></form></div></section>
+
+
+
+<section id="trips" class="wrap"><h2>My Trips</h2>
+
+  <p class="note">Trips are stored in this browser's localStorage only. They are not synced across devices.</p>
+
+  <div class="row"><button class="btn" id="saveBtn">💾 Save current trip</button><button class="btn ghost" id="dlBtn">⬇ Download summary (.txt)</button><button class="btn ghost" id="printBtn">🖨 Print</button></div>
+
+  <div id="tripGrid" class="grid"></div></section>
+
+
+
+<footer><div class="wrap">TripWise — Web Development Mini Project. A frontend app using static sample data and browser localStorage (no backend, no database). Prices are illustrative.</div></footer>
+
+
+
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="card pad box"><button class="icon close" id="mClose">✕</button><div id="mBody"></div></div></div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="app.js" defer></script>
+
+</body></html>
+
+
+

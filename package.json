@@ -1,0 +1,8 @@
+{
+  "name": "tripwise",
+  "version": "1.0.0",
+  "description": "TripWise - Smart Trip Planner & Budget Estimator (Node.js + Express backend, HTML/CSS/JS frontend)",
+  "main": "server/server.js",
+  "scripts": { "start": "node server/server.js" },
+  "dependencies": { "express": "^4.19.2" }
+}
